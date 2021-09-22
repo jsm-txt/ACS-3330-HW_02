@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import RadioButton from './radiobutton';
 import WeatherDisplay from './weatherdisplay';
-import "./weather.css"
+import "./weather.css";
+
+
 
 function Weather() {
     const [zip, setZip] = useState('')
@@ -10,7 +12,7 @@ function Weather() {
 
 
     async function fetchWeather() {
-        const apikey = `198d5c5dde0fde5af2b6b008be2b279d`
+        const apikey =  process.env.REACT_APP_APIKEY
         const path = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},&appid=${apikey}&units=${unit}`
         const res = await fetch(path)
         const json = await res.json()
